@@ -120,7 +120,7 @@ lazy val monotonic =
   settings(commonSettings: _*).
   settings(
   ).
-  dependsOn(langoustine % "compile->compile;test->test")
+  dependsOn(cuttle % "compile->compile;test->test")
 
 lazy val examples =
   (project in file("examples"))
