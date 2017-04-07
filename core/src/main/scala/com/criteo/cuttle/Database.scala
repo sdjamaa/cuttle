@@ -105,7 +105,7 @@ object Database {
       Try(env("MYSQL_PORT", Some("3306")).toInt).getOrElse(3306),
       env("MYSQL_DATABASE"),
       env("MYSQL_USER"),
-      env("MYSQL_PASSWORD")
+      env("exp")
     )
   }
 }

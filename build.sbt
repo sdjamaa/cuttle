@@ -115,6 +115,13 @@ lazy val timeseries =
       )
     .dependsOn(cuttle % "compile->compile;test->test")
 
+lazy val monotonic =
+  (project in file("monotonic")).
+  settings(commonSettings: _*).
+  settings(
+  ).
+  dependsOn(langoustine % "compile->compile;test->test")
+
 lazy val examples =
   (project in file("examples"))
     .settings(commonSettings: _*)
@@ -122,7 +129,7 @@ lazy val examples =
       fork in Test := true,
       connectInput in Test := true
     )
-    .dependsOn(cuttle, timeseries)
+    .dependsOn(cuttle, timeseries, monotonic)
 
 lazy val root =
   (project in file("."))
@@ -130,4 +137,4 @@ lazy val root =
     .settings(
       publishArtifact := false
     )
-    .aggregate(cuttle, timeseries, examples, localdb)
+    .aggregate(cuttle, timeseries, monotonic, examples, localdb)
