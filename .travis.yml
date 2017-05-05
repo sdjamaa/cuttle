@@ -16,12 +16,13 @@ before_deploy:
   -in .travis/keys.tar.enc -out .travis/keys.tar -d
 - tar xvf .travis/keys.tar
 before_cache:
-  # Cleanup the cached directories to avoid unnecessary cache updates
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
   - find $HOME/.sbt        -name "*.lock"               -print -delete
 before_script:
   - sudo chmod +x /usr/local/bin/sbt
 cache:
+  yarn: true
   directories:
+    - node_modules
     - $HOME/.ivy2/cache
     - $HOME/.sbt
